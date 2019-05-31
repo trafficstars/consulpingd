@@ -18,12 +18,12 @@ sudo setcap cap_net_raw+ep `go env GOPATH`/bin/consulpingd
 # get
 curl -s http://localhost:8083/
 ...
-metrics_latency_1h_per90{destination="192.168.100.152",service="consulpingd",source="192.168.100.1"} 1.21586e+08
-metrics_latency_1h_per90{destination="192.168.100.48",service="consulpingd",source="192.168.100.1"} 1.19018e+08
-metrics_latency_1h_per90{destination="192.168.100.114",service="consulpingd",source="192.168.100.1"} 1.17681e+08
-metrics_latency_1h_per90{destination="192.168.100.47",service="consulpingd",source="192.168.100.1"} 1.1897e+08
-metrics_latency_1h_per90{destination="192.168.100.32",service="consulpingd",source="192.168.100.1"} 1.09545e+08
-metrics_latency_1h_per90{destination="192.168.100.40",service="consulpingd",source="192.168.100.1"} 1.04824e+08
+metrics_latency_1m_per90{destination="192.168.100.152",service="consulpingd",source="192.168.100.1"} 1.21586e+08
+metrics_latency_1m_per90{destination="192.168.100.48",service="consulpingd",source="192.168.100.1"} 1.19018e+08
+metrics_latency_1m_per90{destination="192.168.100.114",service="consulpingd",source="192.168.100.1"} 1.17681e+08
+metrics_latency_1m_per90{destination="192.168.100.47",service="consulpingd",source="192.168.100.1"} 1.1897e+08
+metrics_latency_1m_per90{destination="192.168.100.32",service="consulpingd",source="192.168.100.1"} 1.09545e+08
+metrics_latency_1m_per90{destination="192.168.100.40",service="consulpingd",source="192.168.100.1"} 1.04824e+08
 ...
 ```
 (latency is in nanoseconds)
