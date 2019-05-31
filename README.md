@@ -26,3 +26,4 @@ metrics_latency_1h_per90{destination="192.168.100.32",service="consulpingd",sour
 metrics_latency_1h_per90{destination="192.168.100.40",service="consulpingd",source="192.168.100.1"} 1.04824e+08
 ...
 ```
+(latency is in nanoseconds)
