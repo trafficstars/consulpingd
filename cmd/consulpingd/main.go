@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
 	"time"
@@ -18,7 +19,7 @@ func doPing(ip *net.IP, timeout time.Duration) {
 	result, err := ping.ICMPEcho(ip, timeout)
 	if err != nil {
 		metrics.GaugeAggregativeBuffered(`errored`, tags).ConsiderValue(1)
-		log.Print("unable to ICMP-echo-ping:", err)
+		log.Print("unable to ICMP-echo-ping", ip.String(), ":", err)
 		return
 	}
 	metrics.GaugeAggregativeBuffered(`errored`, tags).ConsiderValue(0)
@@ -37,9 +38,13 @@ func doPing(ip *net.IP, timeout time.Duration) {
 
 func main() {
 	cfg := GetConfig()
+	if cfg.Verbose {
+		fmt.Println("config:", *cfg)
+	}
 
 	metrics.SetDefaultTags(metrics.Tags{
-		`source`: cfg.SourceName,
+		`service`: `consulpingd`,
+		`source`:  cfg.SourceName,
 	})
 
 	consulInstance, err := consul.New(cfg.Consuls, cfg.RegisterAtConsuls)

@@ -8,12 +8,13 @@ import (
 )
 
 type Config struct {
-	SourceName             string
-	PingInterval           time.Duration `default:"1s"`
-	PingTimeout            time.Duration `default:"1m"`
-	PrometheusExporterBind string        `default:":55634"`
+	SourceName             string        `envconfig:"SOURCE_NAME"`
+	PingInterval           time.Duration `default:"1s"     envconfig:"PING_INTERVAL"`
+	PingTimeout            time.Duration `default:"1m"     envconfig:"PING_TIMEOUT"`
+	PrometheusExporterBind string        `default:":55634" envconfig:"PROMETHEUS_EXPORTER_BIND"`
 	Consuls                []string
-	RegisterAtConsuls      bool
+	RegisterAtConsuls      bool `envconfig:"REGISTER_AT_CONSULS"`
+	Verbose                bool
 }
 
 func GetConfig() *Config {

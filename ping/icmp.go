@@ -11,6 +11,7 @@ func ICMPEcho(ip *net.IP, timeout time.Duration) (*Result, error) {
 	if err != nil {
 		return nil, err
 	}
+	pinger.SetPrivileged(true)
 	pinger.Count = 1
 	pinger.Timeout = timeout
 	pinger.Run()

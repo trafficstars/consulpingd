@@ -8,7 +8,7 @@ import (
 func (c *Consul) GetIPs() (r []*net.IP) {
 	m := map[string]*net.IP{}
 	for _, consul := range c.consuls {
-		members, error := consul.Agent().Members(true)
+		members, error := consul.Agent().Members(false)
 		if error != nil {
 			log.Print("Unable to get members list:", error)
 		}
